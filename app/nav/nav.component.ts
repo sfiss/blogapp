@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Router, ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 
 import { NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,7 +21,7 @@ export class NavItem {
 	styleUrls: ['app/nav/nav.styles.css'],
 	templateUrl: 'app/nav/nav.template.html'
 })
-export class NavComponent {
+export class NavComponent implements OnInit, OnDestroy {
 	collapsed: boolean = true;
 	
 	constructor(private router: Router) { }

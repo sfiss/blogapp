@@ -9,34 +9,31 @@ import { Blog, BlogCollapseType } from './blog';
 })
 export class BlogOverviewComponent implements OnInit, OnDestroy, DoCheck {
 	
-	search: string
+	sub: any
 	
 	constructor(private route: ActivatedRoute) {
 	}
 	
 	ngOnInit() {
-		console.log('INIT')
 		this.blogs = [
 			new Blog("First Entry"),
 			new Blog("Second")
 		]
-	}
-	
-	ngDoCheck() {
-		// Component not recreated if already present, therefore need to check here
-		var search = ""
-		if(this.route.snapshot.params.search)
-			search = this.route.snapshot.params.search
 		
-		// Performance: Only update if changed
-		if(search !== this.search) {
-			this.search = search;
-			this.filter(search);
-		}
+		this.filteredBlogs = this.blogs;
+		
+		this.sub = this.route.params
+			.subscribe((params) => {
+				let search = params['search'];
+				if(search !== undefined)
+					this.filter(search);
+		});
 	}
 	
 	ngOnDestroy() {
-		
+		if(this.sub !== undefined)
+			this.sub.unsubscribe();
+		this.sub = undefined;
 	}
 	
 	blogs: Array<Blog>;	
