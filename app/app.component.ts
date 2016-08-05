@@ -20,8 +20,8 @@ export class AppComponent {
 }
 
 const NAVITEMS: Array<NavItem> = [
-				new NavItem("Blog"),
-				new NavItem("About")
+				new NavItem("Blog", "/blog"),
+				new NavItem("About", "/about")
 			]
 
 
