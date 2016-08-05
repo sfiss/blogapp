@@ -24,7 +24,7 @@ export class NavItem {
 export class NavComponent {
 	collapsed: boolean = true;
 	
-	constructor(private router: Router) { }
+	constructor(private router: Router, private route: ActivatedRoute) { }
 	
 	@Input()
 	title: string;
@@ -35,7 +35,6 @@ export class NavComponent {
 	public searchBy: string;
 	
 	public search() {
-		console.log("Search with " + this.searchBy);
 		this.router.navigate(['/blog', this.searchBy]);
 	}
 }

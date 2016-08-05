@@ -42,9 +42,9 @@ export class BlogOverviewComponent implements OnInit, OnDestroy {
 	filteredBlogs: Array<Blog>;
 	
 	public filter(by: string) {
-		console.log("Filter with " + by);
+		let search = decodeURIComponent(by);
 		let f = (whole, part) => whole.startsWith(part);
-		this.filteredBlogs = this.blogs.filter(b => f(b.title, by))
+		this.filteredBlogs = this.blogs.filter(b => f(b.title, search))
 	}
 }
 

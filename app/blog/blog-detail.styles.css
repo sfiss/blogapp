@@ -1,0 +1,4 @@
+section a, section a:hover, section a:visited {
+	text-decoration: none;
+	color: black;
+}
