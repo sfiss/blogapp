@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 
 @Injectable()
 export class AuthService {
-	private loggedIn = false;
+	private token: string = undefined;
 
 	constructor(private http: Http) {
 		this.loggedIn = !!localStorage.getItem('auth_token');
@@ -14,26 +14,34 @@ export class AuthService {
 		headers.append('Content-Type', 'application/json');
 
 		return this.http.post(
-			'/login', 
+			'/auth/login', 
 			JSON.stringify({ email, password }), 
 			{ headers }
 		)
 		.map(res => res.json())
 		.map(res => {
 			if (res.success) {
-				localStorage.setItem('auth_token', res.auth_token);
-				this.loggedIn = true;
+				let token = res.auth_token;
+				localStorage.setItem('auth_token', token);
+				this.token = token;
 			}
 			return res.success;
 		});
 	}
   
 	logout() {
-		localStorage.removeItem('auth_token');
-		this.loggedIn = false;
+		return this.http.get(this.config.serverUrl + '/auth/logout', {
+			headers: new Headers({
+				'x-security-token': this.token
+			})
+		})
+		.map(res => {
+			this.token = undefined;
+			localStorage.removeItem('token');
+		});
 	}
 
 	isLoggedIn(): boolean {
-		return this.loggedIn;
+		return !!localStorage.getItem('token');
 	}
 }
