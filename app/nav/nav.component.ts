@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import {NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
+
+import { NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
 
 export class NavItem {
 	public name: string;
@@ -19,6 +21,8 @@ export class NavItem {
 export class NavComponent {
 	collapsed: boolean = true;
 	
+	constructor(private router: Router) { }
+	
 	@Input()
 	title: string;
 	
@@ -28,7 +32,7 @@ export class NavComponent {
 	public searchBy: string;
 	
 	public search() {
-		console.log('Search');
+		this.router.navigate(['/', this.searchBy]);
 	}
 }
 
