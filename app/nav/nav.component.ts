@@ -35,7 +35,8 @@ export class NavComponent {
 	public searchBy: string;
 	
 	public search() {
-		this.router.navigate(['/', this.searchBy]);
+		console.log("Search with " + this.searchBy);
+		this.router.navigate(['/blog', this.searchBy]);
 	}
 }
 
