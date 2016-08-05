@@ -3,10 +3,10 @@ import { Http, Headers } from '@angular/http';
 
 @Injectable()
 export class AuthService {
-	private token: string = undefined;
+	private token: string;
 
 	constructor(private http: Http) {
-		this.loggedIn = !!localStorage.getItem('auth_token');
+		this.token = localStorage.getItem('auth_token');
 	}
 
 	login(email, password) {
@@ -30,7 +30,8 @@ export class AuthService {
 	}
   
 	logout() {
-		return this.http.get(this.config.serverUrl + '/auth/logout', {
+		return this.http.get(
+			'/auth/logout', {
 			headers: new Headers({
 				'x-security-token': this.token
 			})

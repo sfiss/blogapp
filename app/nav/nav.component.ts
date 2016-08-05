@@ -24,6 +24,12 @@ export class NavComponent {
 	
 	@Input()
 	public items: Array<NavItem>;
+	
+	public searchBy: string;
+	
+	public search() {
+		console.log('Search');
+	}
 }
 
 

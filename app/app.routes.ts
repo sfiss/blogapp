@@ -3,7 +3,7 @@ import { BlogOverviewComponent } from './blog/blog-overview.component';
 
 const routes: RouterConfig = [
   {
-    path: '',
+    path: '**',
     component: BlogOverviewComponent
   }
 ];

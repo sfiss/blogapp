@@ -15,12 +15,14 @@
 		<div class="navbar-collapse" [class.collapse]="collapsed">
 			<ul class="nav navbar-nav">
 				<li *ngFor="let item of items" [class.active]="false">
-					<a href="#">{{ item.name }}</a>
+					<a href="#" (click)="searchBy=item.name; search();"><span>{{ item.name }}</span></a>
 				</li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-search"></span> 
+					<input [(ngModel)]="searchBy" placeholder="Search..." (keyup.enter)="search()" (blur)="search()"/></a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> <span>Login</span></a></li>
 			</ul>
 		</div>
 	</div>	
