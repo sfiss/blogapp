@@ -1,9 +1,23 @@
 import { Component } from '@angular/core';
 import {NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
 
-export class NavController {
-	collapsed: boolean;
+export class NavItem {
+	public name: string;
+	
+	constructor(name: string) {
+        this.name = name;
+    }
 }
+
+export class NavController {
+	public collapsed: boolean;
+	public items: Array<NavItem>;
+}
+
+const ITEMS: Array<NavItem> = [
+				new NavItem("Blog"),
+				new NavItem("About")
+			]
 
 @Component({
 	selector: 'blog-app',
@@ -13,9 +27,12 @@ export class NavController {
 	templateUrl: 'app/app.template.html'
 })
 export class AppComponent { 
-	title: string = 'My Blog';
+	public title: string = 'My Blog';
 	
 	navController: NavController = {
-		collapsed: true
+		collapsed: true,
+		items: ITEMS
 	}
 }
+
+
