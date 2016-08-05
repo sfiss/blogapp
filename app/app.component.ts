@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NGB_DIRECTIVES, NGB_PRECOMPILE } from '@ng-bootstrap/ng-bootstrap';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES  } from '@angular/router';
 
 import { NavItem, NavComponent } from './nav/nav.component';
+import { BlogOverviewComponent } from './blog/blog-overview.component';
 
 @Component({
 	selector: 'blog-app',

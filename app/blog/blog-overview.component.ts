@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Blog, BlogCollapseType } from './blog';
 
@@ -8,14 +9,21 @@ import { Blog, BlogCollapseType } from './blog';
 })
 export class BlogOverviewComponent implements OnInit {
 	
+	constructor(private route: ActivatedRoute) {
+	}
+	
 	ngOnInit() {
 		this.blogs = [
 			new Blog("First Entry"),
 			new Blog("Second")
 		]
 		
+		var search = ""
+		if(this.route.snapshot.params.search)
+			search = this.route.snapshot.params.id
+		
 		// TODO: filter
-		this.filter("");
+		this.filter(search);
 	}
 	
 	ngOnDestroy() {
