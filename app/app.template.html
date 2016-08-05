@@ -1,27 +1,2 @@
 <!-- Top Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			
-			<button type="button" class="navbar-toggle" (click)="navController.collapsed = !navController.collapsed">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			
-			<a class="navbar-brand" href="#">{{ title }}</a>
-		</div>
-		
-		<div class="navbar-collapse" [class.collapse]="navController.collapsed">
-			<ul class="nav navbar-nav">
-				<li *ngFor="let navItem of navController.items" [class.active]="false">
-					<a href="#">{{ navItem.name }}</a>
-				</li>
-			</ul>
-			
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			</ul>
-		</div>
-	</div>	
-</nav>
+<blog-nav [items]="navItems" [title]="title"></blog-nav>
