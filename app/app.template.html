@@ -1,5 +1,24 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <h1>Blog</h1>
-  </div>
+<!-- Top Navigation -->
+<nav class="navbar navbar-fixed-top">
+		<div class="container-fluid">
+			
+			<button type="button" class="navbar-toggle" (click)="navController.collapsed = !navController.collapsed">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+			
+			<a class="navbar-brand" href="#">{{ title }}</a>
+			
+			{{ navController.collapsed }}
+			
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+				</ul>
+			</div>
+		</div>
 </nav>
