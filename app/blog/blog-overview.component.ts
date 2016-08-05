@@ -1,13 +1,15 @@
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Blog, BlogCollapseType } from './blog';
+import { BlogDetailComponent } from './blog-detail.component';
 
 @Component({
 	selector: 'blog-overview',
+	directives: [ BlogDetailComponent ],
 	templateUrl: 'app/blog/blog-overview.template.html'
 })
-export class BlogOverviewComponent implements OnInit, OnDestroy, DoCheck {
+export class BlogOverviewComponent implements OnInit, OnDestroy {
 	
 	sub: any
 	

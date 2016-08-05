@@ -21,7 +21,7 @@ export class NavItem {
 	styleUrls: ['app/nav/nav.styles.css'],
 	templateUrl: 'app/nav/nav.template.html'
 })
-export class NavComponent implements OnInit, OnDestroy {
+export class NavComponent {
 	collapsed: boolean = true;
 	
 	constructor(private router: Router) { }
