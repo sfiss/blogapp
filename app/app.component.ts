@@ -16,6 +16,6 @@ export class AppComponent {
 	title: string = 'My Blog';
 	
 	navController: NavController = {
-		collapsed: false
+		collapsed: true
 	}
 }
