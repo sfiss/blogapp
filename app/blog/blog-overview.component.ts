@@ -19,7 +19,7 @@ export class BlogOverviewComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.blogs = [
 			new Blog("First Entry"),
-			new Blog("Second")
+			new Blog("Second Entry that is so very very long that it should wrap over lines")
 		]
 		
 		this.filteredBlogs = this.blogs;

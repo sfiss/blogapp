@@ -4,8 +4,8 @@ export const enum BlogCollapseType {
 
 export class Blog {
 	title: string;
-	createDate: Date;
-	editDate: Date;
+	createDate: Date = new Date();
+	editDate: Date = new Date();
 	content: Array<BlogPart> = [];
 	collapsed: BlogCollapseType = BlogCollapseType.ABSTRACT;
 	

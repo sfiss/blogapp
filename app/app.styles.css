@@ -1,3 +1,7 @@
+.app-content a, .app-content a:hover, .app-content a:visited {
+	text-decoration: none;
+}
+
 .app-content {
 	text-align: justify;
 	max-width: 1024px;
