@@ -7,6 +7,7 @@ export class Blog {
 	createDate: Date = new Date();
 	editDate: Date = new Date();
 	content: Array<BlogPart> = [];
+	keywords: Array<string> = [];
 	collapsed: BlogCollapseType = BlogCollapseType.ALL;
 	
 	constructor(title: string) {
@@ -22,7 +23,37 @@ export class Blog {
 		this.content = [
 			content1, content2
 		];
+		
+		this.keywords = [
+			'java', 'scala'
+		];
+		
+		if(title.startsWith("First")){
+			this.content = [
+				content1
+			];
+		}
 	}
+	
+	public toggleContent() {
+		switch(this.collapsed) {
+			case BlogCollapseType.TITLE:
+				if(this.content.length == 1)
+					this.collapsed = BlogCollapseType.ALL;
+				else
+					this.collapsed = BlogCollapseType.ABSTRACT;
+				break;
+			case BlogCollapseType.ABSTRACT:
+				if(this.content.length == 1)
+					this.collapsed = BlogCollapseType.TITLE;
+				else
+					this.collapsed = BlogCollapseType.ALL;	
+				break;
+			case BlogCollapseType.ALL:
+				this.collapsed = BlogCollapseType.TITLE;
+				break;
+		}
+	} 
 	
 	public showContent(): number {
 		switch(this.collapsed) {

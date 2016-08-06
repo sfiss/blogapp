@@ -1,4 +1,5 @@
 <section class="blog-content blog-detail container-fluid">
+	<!-- Header -->
 	<div class="blog-title-wrapper row">
 		<div class="col-md-9 blog-title">
 			<a href="#" [routerLink]="['/blog', blog.title]"><h2>{{ blog.title }}</h2></a>
@@ -15,20 +16,33 @@
 		</div>
 	</div>
 	
-	<div class="blog-parts" [ngbCollapse]="blog.showContent() == 0">
-		<div *ngFor="let part of blog.content.slice(0, blog.showContent())">
-			<div *ngIf="part.type() == 'text'">
-			TEXT
+	<!-- Content -->
+	<div class="blog-parts"><!-- [ngbCollapse]="blog.showContent() == 0" -->
+		<div class="blog-part" *ngFor="let part of blog.content.slice(0, blog.showContent())">
+			<!-- ngSwitch with typeof not working, so using ngIf all the way -->
+			<div class="blog-part-text" *ngIf="part.type() == 'text'">
+				<h3>{{ part.heading }}</h3>
+				<p [innerHtml]="part.text"></p>
 			</div>
 			
-			<div *ngIf="part.type() == 'code'">
-			CODE
+			<div class="blog-part-code" *ngIf="part.type() == 'code'">
+				<pre><code [innerHtml]="part.code"></code></pre>
 			</div>
 			
-			<div *ngIf="part.type() == 'image'">
-			IMAGE
+			<div class="blog-part-image" *ngIf="part.type() == 'image'">
+				<!-- TODO -->
 			</div>
 		</div>
+	</div>
+	
+	<!-- Toggle -->
+	<div class="blog-toggle">
+		<span (click)="blog.toggleContent()">{{ blog.showContent() == blog.content.length ? 'Show less...' : 'Show more...' }}</span>
+	</div>
+	
+	<!-- Footer -->
+	<div class="blog-footer-wrapper">
+		
 	</div>
 	
 </section>

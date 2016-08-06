@@ -44,7 +44,7 @@ export class BlogOverviewComponent implements OnInit, OnDestroy {
 	public filter(by: string) {
 		let search = decodeURIComponent(by);
 		let f = (whole, part) => whole.startsWith(part);
-		this.filteredBlogs = this.blogs.filter(b => f(b.title, search))
+		this.filteredBlogs = this.blogs.filter(b => f(b.title, search) || b.keywords.indexOf(search) != -1)
 	}
 }
 
