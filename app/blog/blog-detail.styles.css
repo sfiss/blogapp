@@ -1,5 +1,6 @@
 .blog-content a h2 {
 	color: black;
+	font-size: 26px;
 }
 
 .blog-content a, .blog-content a:hover, .blog-content a:visited {
@@ -10,24 +11,10 @@
 	
 }
 
-@media (min-width: 992px) {
-	blog-date, .blog-control {
-		float: none;
-		display: table-cell;
-		vertical-align: bottom;
-	}
-}
-
-.blog-date {
+.blog-date, .blog-control  {
 	color: #9d9d9d;
 	font-size: 10px;
 	white-space: nowrap;
 	overflow: hidden;
-	padding-bottom: 10px;
-}
-
-.blog-control {
-	color: #9d9d9d;
-	font-size: 10px;
-	padding-bottom: 13px;
+	padding-top: 20px;
 }

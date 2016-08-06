@@ -15,23 +15,20 @@
 		</div>
 	</div>
 	
-	<div class="row">
-  <div class="col-md-9">.col-md-9</div>
-  <div class="col-md-2">.col-md-2</div>
-  <div class="col-md-1">.col-md-1</div>
-</div>
-
-	<div class="row">
-  <div class="col-md-9">.col-md-9</div>
-  <div class="col-md-2">.col-md-2</div>
-  <div class="col-md-1">.col-md-1</div>
-</div>
-
-	<div class="row">
-  <div class="col-md-9">.col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 .col-md-9 </div>
-  <div class="col-md-2">.col-md-2</div>
-  <div class="col-md-1">.col-md-1</div>
-</div>
+	<div class="blog-parts" [ngbCollapse]="blog.showContent() == 0">
+		<div *ngFor="let part of blog.content.slice(0, blog.showContent())">
+			<div *ngIf="part.type() == 'text'">
+			TEXT
+			</div>
+			
+			<div *ngIf="part.type() == 'code'">
+			CODE
+			</div>
+			
+			<div *ngIf="part.type() == 'image'">
+			IMAGE
+			</div>
+		</div>
+	</div>
 	
-	CONTENT
 </section>
