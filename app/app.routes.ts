@@ -3,6 +3,8 @@ import { BlogOverviewComponent } from './blog/blog-overview.component';
 
 const routes: RouterConfig = [
 	{ path: 'about', component: BlogOverviewComponent}, // name: 'about'
+	{ path: 'edit', component: BlogOverviewComponent},
+	{ path: 'edit/:title', component: BlogOverviewComponent},
 	{ path: 'login', component: BlogOverviewComponent}, // name: 'login'
 	{ path: 'blog', component: BlogOverviewComponent}, // name: 'blog'
 	{ path: 'blog/:search', component: BlogOverviewComponent}, // name: 'blog-search'

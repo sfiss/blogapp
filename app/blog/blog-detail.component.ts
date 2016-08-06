@@ -14,6 +14,10 @@ import { Blog, BlogCollapseType } from './blog';
 export class BlogDetailComponent {
 	@Input()
 	blog: Blog;
+	
+	edit() {
+		
+	}
 }
 
 
