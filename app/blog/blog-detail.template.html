@@ -2,7 +2,7 @@
 	<!-- Header -->
 	<div class="blog-title-wrapper row">
 		<div class="col-md-9 blog-title">
-			<a href="#" [routerLink]="['/blog', blog.title]"><h2>{{ blog.title }}</h2></a>
+			<a href="#" [routerLink]="['/blog', blog.title]"><h2 class="blog-title">{{ blog.title }}</h2></a>
 		</div>
 		
 		<div class="col-md-2 blog-date">
@@ -36,7 +36,7 @@
 	</div>
 	
 	<!-- Toggle -->
-	<div class="blog-toggle">
+	<div class="blog-toggle blog-control">
 		<span (click)="blog.toggleContent()">{{ blog.showContent() == blog.content.length ? 'Show less...' : 'Show more...' }}</span>
 	</div>
 	
