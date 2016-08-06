@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
+import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
 
 import { Blog, BlogCollapseType } from './blog';
 import { BlogService } from './blog.service';
@@ -14,26 +14,35 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 	
 	subBlogs: any;
 	
-	constructor(private route: ActivatedRoute, private service: BlogService) {}
+	constructor(private router: Router, private route: ActivatedRoute, private service: BlogService) {}
 	
 	ngOnInit() {
 		if(this.route.snapshot.params['title']) {
 			let title = this.route.snapshot.params['title'];
+			console.log(" " + title);
 			this.subBlogs = this.service.getBlog(title).subscribe(
 				blog => this.blog = blog,
-				error => 0
+				error => console.log('Error')
 			);
 		} else {
-			this.blog = new Blog("Title");
+			this.blog = new Blog("");
 		}		
 	}
 	
-	ngOnDestroy() {		
+	ngOnDestroy() {
 		if(this.subBlogs !== undefined)
 			this.subBlogs.unsubscribe();
 	}
 	
 	blog: Blog;
+	
+	save() {
+		console.log('Save')
+		// TODO: delay with progressbar, subscribe and navigate on result
+		this.service.saveBlog(this.blog);
+		let search = this.blog.title;
+		this.router.navigate(['/blog', search]);
+	}
 }
 
 

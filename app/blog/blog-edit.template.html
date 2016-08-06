@@ -1,3 +1,10 @@
 <section class="blog-content blog-edit">
-	<h2>{{ blog.title }}</h2>
+	<form (ngSubmit)="save()" #blogForm="ngForm">
+		<div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" class="form-control" required [(ngModel)]="blog.title" name="title" #titleInput="ngModel" placeholder="Title"/>
+			<div [hidden]="titleInput.valid || titleInput.pristine" class="alert alert-danger">Title is required</div>
+		</div>
+		<button type="submit" class="btn btn-default" [disabled]="!blogForm.form.valid">Save</button>
+	</form>
 </section>
