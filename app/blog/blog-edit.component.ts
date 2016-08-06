@@ -10,7 +10,6 @@ import { Blog, BlogCollapseType } from './blog';
 	templateUrl: 'app/blog/blog-edit.template.html'
 })
 export class BlogEditComponent {
-	@Input()
 	blog: Blog;
 }
 

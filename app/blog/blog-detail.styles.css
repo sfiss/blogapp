@@ -6,11 +6,11 @@
 	margin-bottom: 10px;
 }
 
-.blog-content a, .blog-content a:hover, .blog-content a:visited {
+.blog-content a, .blog-content a:hover, .blog-content a:visited{
 	text-decoration: none;
 }
 
-.blog-date, .blog-control, .blog-toggle  {
+.blog-date, .blog-control, .blog-control a, .blog-toggle  {
 	color: #9d9d9d;
 	font-size: 10px;
 	white-space: nowrap;

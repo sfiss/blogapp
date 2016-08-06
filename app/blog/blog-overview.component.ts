@@ -3,24 +3,23 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Blog, BlogCollapseType } from './blog';
 import { BlogDetailComponent } from './blog-detail.component';
+import { BlogService } from './blog.service';
 
 @Component({
 	selector: 'blog-overview',
 	directives: [ BlogDetailComponent ],
+	providers: [BlogService],
 	templateUrl: 'app/blog/blog-overview.template.html'
 })
 export class BlogOverviewComponent implements OnInit, OnDestroy {
 	
 	sub: any
 	
-	constructor(private route: ActivatedRoute) {
+	constructor(private route: ActivatedRoute, private service: BlogService) {
 	}
 	
 	ngOnInit() {
-		this.blogs = [
-			new Blog("First Entry"),
-			new Blog("Second Entry that is so very very long that it should wrap over lines")
-		]
+		this.blogs = this.service.getBlogs();
 		
 		this.filteredBlogs = this.blogs;
 		
