@@ -21,6 +21,7 @@
 
 .blog-control span {
 	margin-right: 5px;
+	cursor: hand;
 }
 
 .blog-toggle {

@@ -6,7 +6,6 @@ import { BlogService } from './blog.service';
 
 @Component({
 	selector: 'blog-edit',
-	directives: [],
 	styleUrls: ['app/blog/blog-detail.styles.css', 'app/blog/blog-edit.styles.css'],
 	templateUrl: 'app/blog/blog-edit.template.html'
 })
@@ -33,6 +32,8 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 	ngOnDestroy() {
 		if(this.subBlogs !== undefined)
 			this.subBlogs.unsubscribe();
+		if(this.subSave !== undefined)
+			this.subSave.unsubscribe();
 	}
 	
 	public blog: Blog;
@@ -42,16 +43,15 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 	public save() {
 		console.log('Save');
 		this.saving = true;
+		this.blog.editDate = new Date();
 		
 		this.subSave = this.service.saveBlog(this.blog).subscribe(
 			result => {
-				console.log('Saved: ' + result);
-				this.subSave.unsubscribe();
 				this.saving = false;
 				
 				if(result) {
 					let search = this.blog.title;
-					//this.router.navigate(['/blog', search]);
+					this.router.navigate(['/blog', search]);
 				} else {
 					alert('Save failed, maybe title already exists.');
 				}

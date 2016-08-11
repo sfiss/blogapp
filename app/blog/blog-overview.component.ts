@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { Blog, BlogCollapseType } from './blog';
+import { Blog, BlogText, BlogCode, BlogImage } from './blog';
 import { BlogDetailComponent } from './blog-detail.component';
 import { BlogService } from './blog.service';
 
@@ -48,7 +48,21 @@ export class BlogOverviewComponent implements OnInit, OnDestroy {
 	public filter(by: string) {
 		let search = decodeURIComponent(by);
 		let f = (whole, part) => whole.startsWith(part);
-		this.filteredBlogs = this.blogs.filter(b => f(b.title, search) || b.keywords.indexOf(search) != -1)
+		this.filteredBlogs = this.blogs.filter(b => 
+			b.title.startsWith(search) 
+			|| b.keywords.indexOf(search) != -1 
+			|| b.content.some(part => {
+				if(part.type() == 'text') {
+					let text = <BlogText>part;
+					return text.text.indexOf(search) != -1 || text.heading.indexOf(search) != -1;
+				}
+				if(part.type() == 'code')
+					return false;
+				if(part.type() == 'image')
+					return false;
+				return false;
+			})
+		)
 	}
 }
 
