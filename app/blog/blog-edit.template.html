@@ -1,5 +1,5 @@
 <section class="blog-content blog-edit">
-	<form (ngSubmit)="save()" #blogForm="ngForm">
+	<form (ngSubmit)="save()" (ngSubmitt)="save()" #blogForm="ngForm" [class.overlayed]="saving">
 		<div class="form-group">
 			<!-- Title -->
 			<label for="title">Title</label>
@@ -27,6 +27,15 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="form-group blog-control">
+				<!-- Controls -->
+				<span class="glyphicon glyphicon-edit" (click)="addText(i)"></span>
+				<span class="glyphicon glyphicon-barcode"></span>
+				<span class="glyphicon glyphicon-picture"></span>
+				<span class="glyphicon glyphicon-remove"></span>
+			</div>
+			
 		</div>
 		
 		<div class="form-group">

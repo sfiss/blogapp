@@ -1,15 +1,4 @@
-import { bootstrap }    from '@angular/platform-browser-dynamic';
-import { disableDeprecatedForms, provideForms } from '@angular/forms';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app.module';
 
-import { AppComponent } from './app.component';
-import { APP_ROUTES_PROVIDER } from './app.routes'
-import { AuthService } from './auth/auth.service';
-import { AuthGuard } from './auth/auth.guard';
-
-bootstrap(AppComponent, [
-	AuthService,
-	AuthGuard,
-	APP_ROUTES_PROVIDER,
-	disableDeprecatedForms(),
-	provideForms()
-]);
+platformBrowserDynamic().bootstrapModule(AppModule);

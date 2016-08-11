@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
 
-import { Blog, BlogCollapseType } from './blog';
+import { Blog, BlogCollapseType, BlogText, BlogCode, BlogImage } from './blog';
 import { BlogService } from './blog.service';
 
 @Component({
@@ -13,6 +13,7 @@ import { BlogService } from './blog.service';
 export class BlogEditComponent implements OnInit, OnDestroy {
 	
 	subBlogs: any;
+	subSave: any;
 	
 	constructor(private router: Router, private route: ActivatedRoute, private service: BlogService) {}
 	
@@ -36,12 +37,33 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 	
 	blog: Blog;
 	
+	saving: boolean = false; 
+	
 	save() {
-		console.log('Save')
-		// TODO: delay with progressbar, subscribe and navigate on result
-		this.service.saveBlog(this.blog);
-		let search = this.blog.title;
-		this.router.navigate(['/blog', search]);
+		console.log('Save');
+		this.saving = true;
+		
+		this.subSave = this.service.saveBlog(this.blog).subscribe(
+			result => {
+				console.log('Saved: ' + result);
+				this.subSave.unsubscribe();
+				this.saving = false;
+				
+				if(result) {
+					let search = this.blog.title;
+					//this.router.navigate(['/blog', search]);
+				} else {
+					alert('Save failed, maybe title already exists.');
+				}
+			},
+			error => console.log('Error')
+		);
+	}
+	
+	addText(index: number) {
+		let blogPart = new BlogText();
+		
+		this.blog.content.splice(index+1, 0, blogPart);
 	}
 }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
+// import { NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
 import { ROUTER_DIRECTIVES  } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 
@@ -12,12 +12,10 @@ import 'rxjs/Rx';
 
 @Component({
 	selector: 'blog-app',
-	precompile: [ NGB_PRECOMPILE ],
-	directives: [ 
-		NGB_DIRECTIVES,
-		NGB_COLLAPSE_DIRECTIVES,
+	directives: [
 		ROUTER_DIRECTIVES,		
-		NavComponent ],
+		NavComponent 
+	],
 	providers: [ 
 		HTTP_PROVIDERS,
 		BlogService

@@ -1,8 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 
-import { NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
-
 export class NavItem {
 	public name: string;
 	
@@ -16,8 +14,7 @@ export class NavItem {
 
 @Component({
 	selector: 'blog-nav',
-	precompile: [ NGB_PRECOMPILE ],
-	directives: [ NGB_DIRECTIVES, NGB_COLLAPSE_DIRECTIVES, ROUTER_DIRECTIVES ],
+	directives: [ ROUTER_DIRECTIVES ],
 	styleUrls: ['app/nav/nav.styles.css'],
 	templateUrl: 'app/nav/nav.template.html'
 })
