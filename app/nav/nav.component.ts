@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 export class NavItem {
 	public name: string;
@@ -14,17 +14,17 @@ export class NavItem {
 
 @Component({
 	selector: 'blog-nav',
-	directives: [ ROUTER_DIRECTIVES ],
+	directives: [],
 	styleUrls: ['app/nav/nav.styles.css'],
 	templateUrl: 'app/nav/nav.template.html'
 })
 export class NavComponent {
-	collapsed: boolean = true;
+	private collapsed: boolean = true;
 	
 	constructor(private router: Router, private route: ActivatedRoute) { }
 	
 	@Input()
-	title: string;
+	public title: string;
 	
 	@Input()
 	public items: Array<NavItem>;
