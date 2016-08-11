@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Blog, BlogCollapseType } from './blog';
@@ -13,10 +13,10 @@ import { BlogService } from './blog.service';
 })
 export class BlogOverviewComponent implements OnInit, OnDestroy {
 	
-	subSearch: any;
-	subBlogs: any;
+	private subSearch: any;
+	private subBlogs: any;
 	
-	constructor(private route: ActivatedRoute, private service: BlogService) {}
+	constructor(private router: Router, private route: ActivatedRoute, private service: BlogService) {}
 	
 	ngOnInit() {
 		this.subBlogs = this.service.getBlogs().subscribe(
@@ -42,8 +42,8 @@ export class BlogOverviewComponent implements OnInit, OnDestroy {
 			this.subBlogs.unsubscribe();
 	}
 	
-	blogs: Array<Blog>;	
-	filteredBlogs: Array<Blog>;
+	public blogs: Array<Blog>;	
+	public filteredBlogs: Array<Blog>;
 	
 	public filter(by: string) {
 		let search = decodeURIComponent(by);

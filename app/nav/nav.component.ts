@@ -19,7 +19,7 @@ export class NavItem {
 	templateUrl: 'app/nav/nav.template.html'
 })
 export class NavComponent {
-	private collapsed: boolean = true;
+	public collapsed: boolean = true;
 	
 	constructor(private router: Router, private route: ActivatedRoute) { }
 	

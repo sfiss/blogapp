@@ -1,19 +1,19 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES, ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Blog, BlogCollapseType, BlogText, BlogCode, BlogImage } from './blog';
+import { Blog, BlogText, BlogCode, BlogImage } from './blog';
 import { BlogService } from './blog.service';
 
 @Component({
 	selector: 'blog-edit',
-	directives: [ ROUTER_DIRECTIVES ],
+	directives: [],
 	styleUrls: ['app/blog/blog-detail.styles.css', 'app/blog/blog-edit.styles.css'],
 	templateUrl: 'app/blog/blog-edit.template.html'
 })
 export class BlogEditComponent implements OnInit, OnDestroy {
 	
-	subBlogs: any;
-	subSave: any;
+	private subBlogs: any; 
+	private subSave: any;
 	
 	constructor(private router: Router, private route: ActivatedRoute, private service: BlogService) {}
 	
@@ -35,11 +35,11 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 			this.subBlogs.unsubscribe();
 	}
 	
-	blog: Blog;
+	public blog: Blog;
 	
-	saving: boolean = false; 
+	public saving: boolean = false; 
 	
-	save() {
+	public save() {
 		console.log('Save');
 		this.saving = true;
 		
@@ -60,7 +60,7 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 		);
 	}
 	
-	addText(index: number) {
+	public addText(index: number) {
 		let blogPart = new BlogText();
 		
 		this.blog.content.splice(index+1, 0, blogPart);

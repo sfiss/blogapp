@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy  } from '@angular/core';
 
-import { Blog, BlogCollapseType } from './blog';
+import { Blog } from './blog';
 
 @Component({
 	selector: 'blog-detail',
@@ -10,11 +10,7 @@ import { Blog, BlogCollapseType } from './blog';
 })
 export class BlogDetailComponent {
 	@Input()
-	blog: Blog;
-	
-	edit() {
-		
-	}
+	public blog: Blog;
 }
 
 
