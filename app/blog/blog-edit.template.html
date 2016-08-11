@@ -1,10 +1,37 @@
 <section class="blog-content blog-edit">
 	<form (ngSubmit)="save()" #blogForm="ngForm">
 		<div class="form-group">
+			<!-- Title -->
 			<label for="title">Title</label>
 			<input type="text" class="form-control" required [(ngModel)]="blog.title" name="title" #titleInput="ngModel" placeholder="Title"/>
 			<div [hidden]="titleInput.valid || titleInput.pristine" class="alert alert-danger">Title is required</div>
 		</div>
-		<button type="submit" class="btn btn-default" [disabled]="!blogForm.form.valid">Save</button>
+		<div class="form-group">
+			<!-- Content -->
+			<div class="blog-parts">
+				<div class="blog-part" *ngFor="let part of blog.content; let i = index" [attr.data-index]="i">
+					<!-- ngSwitch with typeof not working, so using ngIf all the way -->
+					<div class="blog-part-text" *ngIf="part.type() == 'text'">
+						<label for="heading">Heading</label>
+						<input type="text" class="form-control" [(ngModel)]="part.heading" name="heading" placeholder="Heading"/>
+						<br/>
+						<textarea [(ngModel)]="part.text" name="text"></textarea>
+					</div>
+					
+					<div class="blog-part-code" *ngIf="part.type() == 'code'">
+						<textarea [(ngModel)]="part.code" name="code"></textarea>
+					</div>
+					
+					<div class="blog-part-image" *ngIf="part.type() == 'image'">
+						<!-- TODO -->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<!-- Controls -->
+			<button type="submit" class="btn btn-default" [disabled]="!blogForm.form.valid">Save</button>
+		</div>
 	</form>
 </section>

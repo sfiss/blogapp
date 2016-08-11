@@ -7,7 +7,9 @@ import { Blog, BlogCollapseType } from './blog';
 @Injectable()
 export class BlogService {
 	
-	constructor (private http: Http) {}
+	constructor (private http: Http) {
+		console.log('Recreated BlogService');
+	}
 	
 	mockblogs: Array<Blog> = [ new Blog("Number 1"), new Blog("Number 2")];
 	
@@ -25,13 +27,14 @@ export class BlogService {
 	
 	saveBlog(blog: Blog): Observable<boolean> {
 		// TODO: check if blog does not exist done in server!
-		this.mockblogs.push(blog);
+		if(this.mockblogs.filter(b => b.title == blog.title).length == 0)
+			this.mockblogs.push(blog);
 		return Observable.of(true);
 	}
 	
 	deleteBlog(blog: Blog): Observable<boolean> {
-		// TODO
-		return false;
+		this.mockblogs = this.mockblogs.filter(b => b.title != blog.title);
+		return Observable.of(true);
 	}
 }
 
