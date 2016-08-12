@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-// import { NGB_DIRECTIVES, NGB_PRECOMPILE, NGB_COLLAPSE_DIRECTIVES } from '@ng-bootstrap/ng-bootstrap';
 import { ROUTER_DIRECTIVES  } from '@angular/router';
+import { FORM_DIRECTIVES  } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
+import { REACTIVE_FORM_DIRECTIVES, NgModel } from '@angular/forms';
 
 import { NavItem, NavComponent } from './nav/nav.component';
 import { BlogOverviewComponent } from './blog/blog-overview.component';
@@ -13,7 +14,10 @@ import 'rxjs/Rx';
 @Component({
 	selector: 'blog-app',
 	directives: [
-		ROUTER_DIRECTIVES,		
+		ROUTER_DIRECTIVES,	
+		FORM_DIRECTIVES,
+		REACTIVE_FORM_DIRECTIVES, 
+		NgModel, 
 		NavComponent 
 	],
 	providers: [ 

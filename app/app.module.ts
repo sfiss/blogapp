@@ -7,27 +7,22 @@ import { NavComponent } from './nav/nav.component';
 import { BlogOverviewComponent } from './blog/blog-overview.component';
 import { BlogEditComponent } from './blog/blog-edit.component';
 
-import { ROUTING }        from './app.routes';
-
-
-import { TestComponent }  from './test.component';
+import { ROUTING } from './app.routes';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-	ROUTING
-  ],
-  declarations: [
-    AppComponent,
-	NavComponent,
-	BlogOverviewComponent,
-	BlogEditComponent,
-	TestComponent
-  ],
-  providers: [
-  
-  ],
-  bootstrap: [ AppComponent ]
+	imports: [
+		BrowserModule,
+		ROUTING
+	],
+	declarations: [
+		AppComponent,
+		NavComponent,
+		BlogOverviewComponent,
+		BlogEditComponent
+	],
+	providers: [],
+	bootstrap: [ 
+		AppComponent
+	]
 })
 export class AppModule { }
