@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES  } from '@angular/router';
 import { FORM_DIRECTIVES  } from '@angular/common';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { REACTIVE_FORM_DIRECTIVES, NgModel } from '@angular/forms';
+import { REACTIVE_FORM_DIRECTIVES, NgModel, FORM_PROVIDERS } from '@angular/forms';
 
 import { NavItem, NavComponent } from './nav/nav.component';
 import { BlogOverviewComponent } from './blog/blog-overview.component';
@@ -16,12 +16,13 @@ import 'rxjs/Rx';
 	directives: [
 		ROUTER_DIRECTIVES,	
 		FORM_DIRECTIVES,
-		REACTIVE_FORM_DIRECTIVES, 
-		NgModel, 
+		REACTIVE_FORM_DIRECTIVES,
+		NgModel,
 		NavComponent 
 	],
 	providers: [ 
 		HTTP_PROVIDERS,
+		FORM_PROVIDERS,
 		BlogService
 	],
 	styleUrls: ['app/app.styles.css'],
