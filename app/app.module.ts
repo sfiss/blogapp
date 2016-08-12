@@ -9,6 +9,9 @@ import { BlogEditComponent } from './blog/blog-edit.component';
 
 import { ROUTING }        from './app.routes';
 
+
+import { TestComponent }  from './test.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -19,7 +22,8 @@ import { ROUTING }        from './app.routes';
     AppComponent,
 	NavComponent,
 	BlogOverviewComponent,
-	BlogEditComponent
+	BlogEditComponent,
+	TestComponent
   ],
   providers: [
   

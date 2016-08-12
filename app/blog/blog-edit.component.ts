@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Blog, BlogText, BlogCode, BlogImage } from './blog';
+import { Blog, BlogText, BlogCode, BlogImage, BlogPart } from './blog';
 import { BlogService } from './blog.service';
 
 @Component({
@@ -64,6 +64,26 @@ export class BlogEditComponent implements OnInit, OnDestroy {
 		let blogPart = new BlogText();
 		
 		this.blog.content.splice(index+1, 0, blogPart);
+		this.blog.content = this.blog.content.slice();
+	}
+	
+	public addCode(index: number) {
+		let blogPart = new BlogCode();
+		
+		this.blog.content.splice(index+1, 0, blogPart);
+		this.blog.content = this.blog.content.slice();
+	}
+	
+	public addImage(index: number) {
+		let blogPart = new BlogImage();
+		
+		this.blog.content.splice(index+1, 0, blogPart);
+		this.blog.content = this.blog.content.slice();
+	}
+	
+	public remove(part: BlogPart) {
+		this.blog.content.splice(this.blog.content.indexOf(part), 1);
+		this.blog.content = this.blog.content.slice();
 	}
 }
 

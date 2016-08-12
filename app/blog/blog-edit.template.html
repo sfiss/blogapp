@@ -1,4 +1,5 @@
 <section class="blog-content blog-edit">
+	{{ blog }}
 	<form (ngSubmit)="save()" #blogForm="ngForm" [class.overlayed]="saving">
 		<div class="form-group">
 			<!-- Title -->
@@ -10,6 +11,7 @@
 			<!-- Content -->
 			<div class="blog-parts">
 				<div class="blog-part" *ngFor="let part of blog.content; let i = index" [attr.data-index]="i">
+					
 					<!-- ngSwitch with typeof not working, so using ngIf all the way -->
 					<div class="blog-part-text" *ngIf="part.type() == 'text'">
 						<label for="heading">Heading</label>
@@ -29,9 +31,9 @@
 					<div class="form-group blog-control">
 						<!-- Controls -->
 						<span class="glyphicon glyphicon-edit" (click)="addText(i)"></span>
-						<span class="glyphicon glyphicon-barcode"></span>
-						<span class="glyphicon glyphicon-picture"></span>
-						<span class="glyphicon glyphicon-remove"></span>
+						<span class="glyphicon glyphicon-barcode" (click)="addCode(i)"></span>
+						<span class="glyphicon glyphicon-picture" (click)="addImage(i)"></span>
+						<span class="glyphicon glyphicon-remove" (click)="remove(part)"></span>
 					</div>
 				</div>
 			</div>			

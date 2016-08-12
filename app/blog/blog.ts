@@ -7,32 +7,14 @@ export class Blog {
 	createDate: Date = new Date();
 	editDate: Date = new Date();
 	content: Array<BlogPart> = [];
-	keywords: Array<string> = [];
 	collapsed: BlogCollapseType = BlogCollapseType.ALL;
 	
 	constructor(title: string) {
 		this.title = title;
 		
-		let content1 = new BlogText();
-		content1.heading = "C1";
-		content1.text = "Lalalalalla";
-		
-		let content2 = new BlogCode();
-		content2.code = "Lalalalalla";
-		
 		this.content = [
-			content1, content2
+			new BlogText()
 		];
-		
-		this.keywords = [
-			'java', 'scala'
-		];
-		
-		if(title.startsWith("First")){
-			this.content = [
-				content1
-			];
-		}
 	}
 	
 	public toggleContent() {
@@ -65,6 +47,10 @@ export class Blog {
 				return this.content.length;
 		}
 	}
+	
+	public toString = () : string => {
+        return `Blog: ${this.title} [` + this.content.map(p => p.toString()).join(', ') + `]`;
+    }
 }
 
 export interface BlogPart {
@@ -72,25 +58,38 @@ export interface BlogPart {
 }
 
 export class BlogText implements BlogPart {
-	heading: string;
-	text: string;
+	public heading: string = "";
+	public text: string = "";
 	
 	public type(): string {
 		return "text";
 	}
+	
+	public toString = () : string => {
+        return `Text (${this.heading}, ${this.text})`;
+    }
 }
 
 export class BlogCode implements BlogPart {
-	code: string;
+	public code: string = "";
 	
 	public type(): string {
 		return "code";
 	}
+	
+	public toString = () : string => {
+        return `Code (${this.code})`;
+    }
 }
 
 export class BlogImage implements BlogPart {
-	// TODO
+	public imageURL: Uint8Array;
+	
 	public type(): string {
 		return "image";
 	}
+	
+	public toString = () : string => {
+        return `Image`;
+    }
 }

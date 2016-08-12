@@ -1,0 +1,11 @@
+Test Comp
+
+{{ cont.list }}
+
+<form>
+<div *ngFor="let item of cont.list; let i = index;">
+	{{ item.name }}
+	<input type="text" name="name" [(ngModel)]="item.name"/>
+	<span (click)="add()">Add</span>
+</div>
+</form>
